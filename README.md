@@ -5,6 +5,14 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+> This is a **fork** of [react-otp-input](https://github.com/devfolioco/react-otp-input). The fork introduces additional features and enhancements such as:
+> - New feature : now you can blur the input with using shouldBlurOnFinish prop (close keyboard on mobile)
+
+
+If you're looking for the original package, you can find it [here](https://github.com/devfolioco/react-otp-input).
+
+---
+
 A fully customizable, one-time password input component for the web built with React.
 
 ![see here](https://media.giphy.com/media/lN98dFU6h3oP0wWS5x/giphy.gif)

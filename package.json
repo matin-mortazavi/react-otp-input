@@ -1,6 +1,6 @@
 {
   "name": "react-otp-input",
-  "version": "3.1.1",
+  "version": "1.0.0",
   "description": "A fully customizable, one-time password input component for the web built with React",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
@@ -51,9 +51,9 @@
   "homepage": "https://devfolioco.github.io/react-otp-input",
   "repository": {
     "type": "git",
-    "url": "https://github.com/devfolioco/react-otp-input"
+    "url": "https://github.com/matin-mortazavi/react-otp-input"
   },
   "bugs": {
-    "url": "https://github.com/devfolioco/react-otp-input/issues"
+    "url": "https://github.com/matin-mortazavi/react-otp-input/issues"
   }
 }
