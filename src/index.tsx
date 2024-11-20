@@ -29,6 +29,8 @@ interface OTPInputProps {
   value?: string;
   /** Number of OTP inputs to be rendered */
   numInputs?: number;
+  /** Blur after last char entered (close keyboard on mobile) */
+  shouldBlurOnFinish?: boolean;
   /** Callback to be called when the OTP value changes */
   onChange: (otp: string) => void;
   /** Callback to be called when pasting content into the component */
@@ -58,6 +60,7 @@ const OTPInput = ({
   numInputs = 4,
   onChange,
   onPaste,
+  shouldBlurOnFinish,
   renderInput,
   shouldAutoFocus = false,
   inputType = 'text',
@@ -83,6 +86,12 @@ const OTPInput = ({
       inputRefs.current[0]?.focus();
     }
   }, [shouldAutoFocus]);
+
+  React.useEffect(() => {
+    if (shouldBlurOnFinish && numInputs === value?.length) {
+      inputRefs.current[numInputs]?.blur();
+    }
+  }, [shouldBlurOnFinish, numInputs, value]);
 
   const getPlaceholderValue = () => {
     if (typeof placeholder === 'string') {
