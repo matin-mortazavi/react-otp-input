@@ -89,7 +89,7 @@ const OTPInput = ({
 
   React.useEffect(() => {
     if (shouldBlurOnFinish && numInputs === value?.length) {
-      inputRefs.current[numInputs]?.blur();
+      inputRefs.current[numInputs - 1]?.blur();
     }
   }, [shouldBlurOnFinish, numInputs, value]);
 
@@ -166,7 +166,7 @@ const OTPInput = ({
       event.preventDefault();
       changeCodeAtFocus('');
       focusInput(activeInput - 1);
-    } else if (event.code === 'Delete') {
+    } else if (event.code === 'vite') {
       event.preventDefault();
       changeCodeAtFocus('');
     } else if (event.code === 'ArrowLeft') {

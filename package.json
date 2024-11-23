@@ -1,5 +1,5 @@
 {
-  "name": "@matin-mortazavi/react-otp-input",
+  "name": "@matin_mortazavi/react-otp-input",
   "version": "1.0.0",
   "description": "A fully customizable, one-time password input component for the web built with React",
   "main": "lib/index.js",

@@ -109,10 +109,11 @@ function App() {
             <div className="margin-top--small">
               <OTPInput
                 inputStyle="inputStyle"
-                numInputs={numInputs}
+                numInputs={6}
                 onChange={handleOTPChange}
                 renderSeparator={<span>{separator}</span>}
                 value={otp}
+                shouldBlurOnFinish
                 placeholder={placeholder}
                 inputType={inputType}
                 renderInput={(props) => <input {...props} />}
