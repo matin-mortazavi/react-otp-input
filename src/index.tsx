@@ -1,61 +1,9 @@
 import React from 'react';
-
-type AllowedInputTypes = 'password' | 'text' | 'number' | 'tel';
-
-type InputProps = Required<
-  Pick<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    | 'value'
-    | 'onChange'
-    | 'onFocus'
-    | 'onBlur'
-    | 'onKeyDown'
-    | 'onPaste'
-    | 'aria-label'
-    | 'autoComplete'
-    | 'style'
-    | 'inputMode'
-    | 'onInput'
-  > & {
-    ref: React.RefCallback<HTMLInputElement>;
-    placeholder: string | undefined;
-    className: string | undefined;
-    type: AllowedInputTypes;
-  }
->;
-
-interface OTPInputProps {
-  /** Value of the OTP input */
-  value?: string;
-  /** Number of OTP inputs to be rendered */
-  numInputs?: number;
-  /** Blur after last char entered (close keyboard on mobile) */
-  shouldBlurOnFinish?: boolean;
-  /** Callback to be called when the OTP value changes */
-  onChange: (otp: string) => void;
-  /** Callback to be called when pasting content into the component */
-  onPaste?: (event: React.ClipboardEvent<HTMLDivElement>) => void;
-  /** Function to render the input */
-  renderInput: (inputProps: InputProps, index: number) => React.ReactNode;
-  /** Whether the first input should be auto focused */
-  shouldAutoFocus?: boolean;
-  /** Placeholder for the inputs */
-  placeholder?: string;
-  /** Function to render the separator */
-  renderSeparator?: ((index: number) => React.ReactNode) | React.ReactNode;
-  /** Style for the container */
-  containerStyle?: React.CSSProperties | string;
-  /** Style for the input */
-  inputStyle?: React.CSSProperties | string;
-  /** The type that will be passed to the input being rendered */
-  inputType?: AllowedInputTypes;
-  /** Do not apply the default styles to the inputs, will be removed in future versions */
-  skipDefaultStyles?: boolean; // TODO: Remove in next major release
-}
+import { OTPInputProps } from './types';
 
 const isStyleObject = (obj: unknown) => typeof obj === 'object' && obj !== null;
 
-const OTPInput = ({
+export const OTPInput = ({
   value = '',
   numInputs = 4,
   onChange,
@@ -81,12 +29,14 @@ const OTPInput = ({
     inputRefs.current = inputRefs.current.slice(0, numInputs);
   }, [numInputs]);
 
+  // Focus the first input on component mount
   React.useEffect(() => {
     if (shouldAutoFocus) {
       inputRefs.current[0]?.focus();
     }
   }, [shouldAutoFocus]);
 
+  // Blur the last input on finish
   React.useEffect(() => {
     if (shouldBlurOnFinish && numInputs === value?.length) {
       inputRefs.current[numInputs - 1]?.blur();
@@ -278,6 +228,3 @@ const OTPInput = ({
     </div>
   );
 };
-
-export type { OTPInputProps, InputProps, AllowedInputTypes };
-export default OTPInput;
